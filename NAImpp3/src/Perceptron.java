@@ -1,14 +1,22 @@
 import java.io.IOException;
 import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 public class Perceptron {
     private final String language;
+    private List<Double> weights;
+    private double threshold;
 
     public Perceptron(String language) {
         this.language = language;
+        generateWeightsVector();
+    }
+
+    private void generateWeightsVector() {
+        this.threshold = Math.random();
+        this.weights = Stream.generate(Math::random).limit(ProportionVector.latinaCharacters.size()).toList();
     }
 
     public static List<Perceptron> createPerceptronLists(Path dataDirectoryPath) {
