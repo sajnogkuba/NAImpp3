@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class ProportionVector {
-    private static final List<Character> latinaCharacters = getLatinaCharacters();
+    public static final List<Character> latinaCharacters = getLatinaCharacters();
     private final List<Double> proportions = new ArrayList<>(Arrays.asList(new Double[26]));
 
 
@@ -14,7 +14,6 @@ public class ProportionVector {
     public ProportionVector(String text) {
         Collections.fill(proportions, 0.0);
         calculateProportions(text);
-        System.out.println(proportions);
     }
 
     private void calculateProportions(String text) {

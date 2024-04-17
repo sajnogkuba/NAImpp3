@@ -1,5 +1,3 @@
-import java.nio.file.Path;
-
 public class TextFile {
     private final String content;
     private final String language;
