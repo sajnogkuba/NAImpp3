@@ -22,5 +22,15 @@ public class PerceptronLayer {
         return null;
     }
     public void teach() {
+        for (TextFile textFile : trainSet) {
+            for (Perceptron perceptron : perceptrons) {
+                if(
+                        (perceptron.isActive(textFile) && !textFile.getLanguage().equals(perceptron.getLanguage())
+                        || !perceptron.isActive(textFile) && textFile.getLanguage().equals(perceptron.getLanguage()))
+                ){
+                    perceptron.teach(textFile);
+                }
+            }
+        }
     }
 }

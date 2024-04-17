@@ -51,4 +51,17 @@ public class Perceptron {
     public String getLanguage() {
         return language;
     }
+
+    public void teach(TextFile textFile) {
+        double alpha = 0.1;
+        List<Double> weights = new ArrayList<>();
+        ProportionVector proportionVector = textFile.getProportionVector();
+        int y = isActive(textFile) ? 1 : 0;
+        int d = y == 0 ? 1 : 0;
+        for (int i = 0; i < proportionVector.size() - 1; i++) {
+            weights.add(this.weights.get(i) + (d - y) * alpha * proportionVector.get(i));
+        }
+        this.weights = weights;
+        this.threshold = this.threshold + (d - y) * alpha * -1;
+    }
 }
