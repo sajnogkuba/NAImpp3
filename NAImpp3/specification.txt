@@ -2,15 +2,15 @@ Specyfikacja programu "Jednowarstwowa siec neuronowa":
 
 Dane wejściowe (należy samemu przygotować):
 
-1. Stworzyć zadany katalog na dane.
+1. Stworzyć zadany katalog na dane. ------------- DONE
 
 2. W zadanym katalogu tworzymy kilka (K=3) podkatalogów
-nazwanych nazwami jezykow (np. czeski, slowacki ...)
+nazwanych nazwami jezykow (np. czeski, slowacki ...) ------------- DONE
 
 3. W kazdym z nich umieszczamy po kilka tekstow
 trenujacych sciagnietych np. z wikipedii w odpowiednich jezykach (w alfabetach łacińskich).
 (Z praktyki wynika, ze wystarcza nawet mniej 10 tekstów uczących dla każdego języka, ale dlugosci chociaz ze
-2 akapity)
+2 akapity)   ------------- DONE
 
 4. W momencie uruchomienia sieć perceptronów będzie używała tych tekstów jako dane trenujące.
 
