@@ -6,10 +6,15 @@ import java.util.List;
 
 public class UserInterface extends JFrame {
     private static final Path dataDirectoryPath = Paths.get("Data");
-    private static final DataLoader dataLoader = new DataLoader(dataDirectoryPath);
-    private static final PerceptronLayer perceptronLayer = new PerceptronLayer(dataDirectoryPath);
-    private static final List<TextFile> trainSet = dataLoader.loadData();
+    private static final Path testDirectoryPath = Paths.get("Test");
+    private static final PerceptronLayer perceptronLayer = new PerceptronLayer(dataDirectoryPath, testDirectoryPath);
     UserInterface(){
+        for (int i = 0; i < 10000 && perceptronLayer.checkAccuracy() < 100; i++){
+            System.out.println("Accuracy: " + perceptronLayer.checkAccuracy() + " %");
+            perceptronLayer.teach();
+        }
+
+
         JPanel north = new JPanel(new FlowLayout());
         JLabel typeInText = new JLabel("Type in Text to classify");
         JButton classify = new JButton("Classify!");
