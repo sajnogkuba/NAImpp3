@@ -16,6 +16,14 @@ public class ProportionVector {
         calculateProportions(text);
     }
 
+    public int size(){
+        return proportions.size();
+    }
+
+    public double get(int i){
+        return proportions.get(i);
+    }
+
     private void calculateProportions(String text) {
         text.chars().forEach(c -> proportions.set(
                 latinaCharacters.indexOf((char) c), proportions.get(latinaCharacters.indexOf((char) c)) + 1

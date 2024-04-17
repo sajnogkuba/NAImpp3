@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
-import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 
 public class Perceptron {
@@ -12,6 +11,19 @@ public class Perceptron {
     public Perceptron(String language) {
         this.language = language;
         generateWeightsVector();
+    }
+
+    public boolean isActive(TextFile textFile){
+        return calculateNetValue(textFile) > threshold;
+    }
+
+    public double calculateNetValue(TextFile textFile){
+        double sum = 0;
+        ProportionVector proportionVector = textFile.getProportionVector();
+        for(int i = 0; i < proportionVector.size() - 1; i++){
+            sum += proportionVector.get(i) * weights.get(i);
+        }
+        return sum;
     }
 
     private void generateWeightsVector() {

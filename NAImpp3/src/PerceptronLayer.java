@@ -18,6 +18,9 @@ public class PerceptronLayer {
         return 0;
     }
 
+    public String classify(TextFile textFile){
+        return null;
+    }
     public void teach() {
     }
 }
