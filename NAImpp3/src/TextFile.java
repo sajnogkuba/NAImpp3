@@ -1,20 +1,14 @@
 import java.nio.file.Path;
 
 public class TextFile {
-    private String content;
+    private final String content;
     private final String language;
+    private final ProportionVector proportionVector;
 
     public TextFile(String language, String content) {
         this.language = language;
         this.content = content;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+        this.proportionVector = new ProportionVector(content);
     }
 
     @Override
@@ -23,5 +17,17 @@ public class TextFile {
                 "content='" + content + '\'' +
                 ", language='" + language + '\'' +
                 '}';
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public ProportionVector getProportionVector() {
+        return proportionVector;
     }
 }
