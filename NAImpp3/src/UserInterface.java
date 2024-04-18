@@ -9,10 +9,11 @@ public class UserInterface extends JFrame {
     private static final Path testDirectoryPath = Paths.get("Test");
     private static final PerceptronLayer perceptronLayer = new PerceptronLayer(dataDirectoryPath, testDirectoryPath);
     UserInterface(){
-        for (int i = 0; i < 10000 && perceptronLayer.checkAccuracy() < 100; i++){
+        for (int i = 0; i < 100 && perceptronLayer.checkAccuracy() < 66; i++){
             System.out.println("Accuracy: " + perceptronLayer.checkAccuracy() + " %");
             perceptronLayer.teach();
         }
+        perceptronLayer.test();
 
 
         JPanel north = new JPanel(new FlowLayout());
@@ -21,7 +22,12 @@ public class UserInterface extends JFrame {
         north.add(typeInText);
         north.add(classify);
         JLabel south = new JLabel("              I think it is: ");
-        JScrollPane center = new JScrollPane(new JTextArea());
+        JTextArea jTextArea = new JTextArea();
+        JScrollPane center = new JScrollPane(jTextArea);
+        classify.addActionListener((e) -> {
+            south.setText("              I think it is: " + perceptronLayer.classify(new TextFile(jTextArea.getText())));
+        });
+
         center.setPreferredSize(new Dimension(500, 300));
         this.add(north, BorderLayout.NORTH);
         this.add(center, BorderLayout.CENTER);

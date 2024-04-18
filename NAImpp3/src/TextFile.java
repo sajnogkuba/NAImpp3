@@ -9,6 +9,12 @@ public class TextFile {
         this.proportionVector = new ProportionVector(content);
     }
 
+    public TextFile(String text) {
+        this.content = text.toLowerCase().replaceAll("[^a-z]", "");
+        this.proportionVector = new ProportionVector(content);
+        this.language = null;
+    }
+
     @Override
     public String toString() {
         return "TextFile{" +
