@@ -26,7 +26,7 @@ public class Perceptron {
         return sum;
     }
 
-    private void generateWeightsVector() {
+    public void generateWeightsVector() {
         this.threshold = Math.random();
         this.weights = Stream.generate(Math::random).limit(ProportionVector.latinaCharacters.size()).toList();
     }

@@ -1,4 +1,5 @@
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ public class PerceptronLayer {
         this.trainSet = dataLoader.loadData();
         dataLoader = new DataLoader(testDirectoryPath);
         this.testSet = dataLoader.loadData();
+        Collections.shuffle(testSet);
+        Collections.shuffle(trainSet);
     }
 
     public double checkAccuracy() {
@@ -47,9 +50,10 @@ public class PerceptronLayer {
         }
     }
 
-    public void test() {
-        for (TextFile textFile : trainSet) {
-            System.out.println(classify(textFile));
+
+    public void changeWeights(){
+        for (Perceptron perceptron : perceptrons) {
+            perceptron.generateWeightsVector();
         }
     }
 }

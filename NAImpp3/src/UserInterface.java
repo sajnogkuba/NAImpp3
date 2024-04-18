@@ -9,12 +9,14 @@ public class UserInterface extends JFrame {
     private static final Path testDirectoryPath = Paths.get("Test");
     private static final PerceptronLayer perceptronLayer = new PerceptronLayer(dataDirectoryPath, testDirectoryPath);
     UserInterface(){
-        for (int i = 0; i < 100 && perceptronLayer.checkAccuracy() < 66; i++){
-            System.out.println("Accuracy: " + perceptronLayer.checkAccuracy() + " %");
-            perceptronLayer.teach();
+        while (perceptronLayer.checkAccuracy() < 100) {
+            perceptronLayer.changeWeights();
+            for (int i = 0; i < 1000 && perceptronLayer.checkAccuracy() < 100; i++) {
+                System.out.println("Accuracy: " + perceptronLayer.checkAccuracy() + " %");
+                perceptronLayer.teach();
+            }
         }
-        perceptronLayer.test();
-
+        System.out.println("Accuracy: " + perceptronLayer.checkAccuracy() + " %");
 
         JPanel north = new JPanel(new FlowLayout());
         JLabel typeInText = new JLabel("Type in Text to classify");
